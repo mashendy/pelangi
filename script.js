@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const notReadyOverlay = document.getElementById("notReadyOverlay");
   const closeNotReady = document.getElementById("closeNotReady");
 
-  // Countdown 5 detik
-  const targetDate = new Date().getTime() + 5000;
+  // Countdown ke 14 Mei 2026 jam 00:00
+  const targetDate = new Date("2026-05-14T00:00:00").getTime();
 
   function formatTime(value) {
     return String(Math.max(0, value)).padStart(2, "0");
@@ -42,10 +42,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const distance = targetDate - now;
 
     // Hitung waktu
-    const seconds = Math.floor(distance / 1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
-    // Update tampilan
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) /
+      (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+      (distance % (1000 * 60 * 60)) /
+      (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+      (distance % (1000 * 60)) / 1000
+    );
+
+    // Update tampilan countdown
+    const daysElement = document.getElementById("days");
+    const hoursElement = document.getElementById("hours");
+    const minutesElement = document.getElementById("minutes");
     const secondsElement = document.getElementById("seconds");
+
+    if (daysElement) {
+      daysElement.textContent = formatTime(days);
+    }
+
+    if (hoursElement) {
+      hoursElement.textContent = formatTime(hours);
+    }
+
+    if (minutesElement) {
+      minutesElement.textContent = formatTime(minutes);
+    }
 
     if (secondsElement) {
       secondsElement.textContent = formatTime(seconds);
@@ -55,9 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (distance <= 0) {
       clearInterval(countdownInterval);
 
-      if (secondsElement) {
-        secondsElement.textContent = "00";
-      }
+      if (daysElement) daysElement.textContent = "00";
+      if (hoursElement) hoursElement.textContent = "00";
+      if (minutesElement) minutesElement.textContent = "00";
+      if (secondsElement) secondsElement.textContent = "00";
 
       if (wishMessage) {
         wishMessage.textContent =
@@ -65,9 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       updateGiftStatus(0);
-    } else {
-      updateGiftStatus(distance);
+
+      return;
     }
+
+    updateGiftStatus(distance);
   }
 
   // Fungsi kirim WhatsApp
@@ -162,8 +194,9 @@ document.addEventListener("DOMContentLoaded", () => {
     giftButton.addEventListener("click", handleGiftClick);
   }
 
-  // Jalankan countdown
+  // Jalankan countdown pertama kali
   updateCountdown();
 
+  // Update tiap 1 detik
   const countdownInterval = setInterval(updateCountdown, 1000);
 });
