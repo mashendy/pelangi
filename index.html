@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="card">
+      <div class="balloons">
+        <span class="balloon balloon-1"></span>
+        <span class="balloon balloon-2"></span>
+        <span class="balloon balloon-3"></span>
+      </div>
+      <header class="hero">
+        <h1>Selamat Ulang Tahun, Sayang!</h1>
+        <p>Semoga hari ini penuh kejutan manis, tawa, dan kenangan indah.</p>
+      </header>
+      <section class="photo-card">
+        <div class="photo-frame">
+          <img src="WhatsApp Image 2026-04-30 at 19.10.21.jpeg" alt="Foto kejutan ulang tahun" />
+        </div>
+        <div class="photo-text">
+          <h2>Kenangan Manis</h2>
+          <p>Semoga setiap momen ulang tahunmu selalu berkilau seperti foto ini.</p>
+        </div>
+      </section>
+      <section class="message-card">
+        <h2>Untuk Kamu yang Spesial</h2>
+        <p>Kamu adalah sinar ungu yang membuat hari-hariku jadi lebih cerah. Semoga semua impianmu menjadi nyata dan bahagia selalu.</p>
+      </section>
+      <section class="countdown-section">
+        <div class="countdown-card">
+          <div>
+            <span id="days">00</span>
+            <small>Hari</small>
+          </div>
+          <div>
+            <span id="hours">00</span>
+            <small>Jam</small>
+          </div>
+          <div>
+            <span id="minutes">00</span>
+            <small>Menit</small>
+          </div>
+          <div>
+            <span id="seconds">00</span>
+            <small>Detik</small>
+          </div>
+        </div>
+      </section>
+      <button id="wishButton" class="wish-button">Buka Kejutan</button>
+      <div id="wishMessage" class="wish-message">Tekan tombol untuk melihat hadiah romantis dan waktunya.</div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="popupOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-button" id="closePopup" aria-label="Tutup popup">×</button>
+      <div class="modal-photo">
+        <img src="WhatsApp Image 2026-05-13 at 20.37.44.jpeg" alt="Hadiah ulang tahun" />
+      </div>
+      <h2 id="modalTitle">Untukmu yang Paling Istimewa</h2>
+      <p>Di sini, setiap detik adalah ungkapan cinta. Hadiah ini menunggu momen yang tepat untuk kamu rasa, karena setiap kejutan layak terasa sempurna.</p>
+      <p class="popup-note">Kalau belum waktunya, jangan khawatir: momen spesial sedang mendekat. Tunggu sebentar lagi agar hadiahnya makin berkesan.</p>
+      <button id="giftButton" class="gift-button" disabled>Hadiah Belum Siap</button>
+      <p id="giftStatus" class="gift-status">Hadiah akan terbuka saat hitungan selesai.</p>
+      <div class="modal-badges">
+        <span>Romantis</span>
+        <span>Istimewa</span>
+        <span>Bersinar</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="notReadyOverlay" aria-hidden="true">
+    <div class="modal not-ready-modal" role="dialog" aria-modal="true" aria-labelledby="notReadyTitle">
+      <button class="close-button" id="closeNotReady" aria-label="Tutup popup">×</button>
+      <div class="not-ready-icon">⏳</div>
+      <h2 id="notReadyTitle">Belum Waktunya, Sayang</h2>
+      <p>Momen spesial ini masih dalam perjalanan. Tunggu sampai hitungan mundur selesai, dan kejutan akan terbuka dengan sempurna.</p>
+      <p class="not-ready-note">Sabarlah sebentar lagi, cinta yang paling indah selalu layak ditunggu.</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
